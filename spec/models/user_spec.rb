@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let (:subject){:bob}
+  fixtures :users
 
   it 'is valid with all the properties' do
-    expect(subject).to be_valid
+    expect(users(:bob)).to be_valid
   end
 
 end

@@ -154,15 +154,27 @@ Create test case using 'it' and RSpec Expectations
   email: 'bob@sq.com'
 ```
 
-- add the email_validator gem and run bundle install
 - add validations to the users model
 
 ```ruby
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true, email: true
+  validates :email, presence: true, uniqueness: true
 ```
 
 - to use fixtures add them to the describe of the test file
+
+Example with Bob:
+
+```ruby
+RSpec.describe User, type: :model do
+
+ fixtures :users
+
+  it 'is valid with all the properties' do
+    expect(users(:bob)).to be_valid
+  end
+```
+
 - fixtures can be tedious if we need more than simple data
 - it is recommended to use factories
 
